@@ -2,6 +2,7 @@
 package config
 
 import (
+	"os"
 	"time"
 )
 
@@ -183,3 +184,10 @@ const (
 	// TCPPortMax defines the maximum port number for TCP connections.
 	TCPPortMax = 65535
 )
+
+func getEnv(key, defaultValue string) string {
+	if val, ok := os.LookupEnv(key); ok {
+		return val
+	}
+	return defaultValue
+}
