@@ -83,11 +83,41 @@ const (
 	//  - A custom string (typically a file path)
 	//
 	// Default: [DefaultLogOutput]
-	EnvLogOutput               = "LOG_OUTPUT"
-	EnvServerAddress           = "SERVER_ADDRESS"
-	EnvServerReadTimeout       = "SERVER_READ_TIMEOUT"
+	EnvLogOutput = "LOG_OUTPUT"
+
+	// EnvServerAddress specifies the environment variable name for configuring the
+	// server's address.
+	//
+	// Default: [DefaultServerAddress]
+	EnvServerAddress = "SERVER_ADDRESS"
+
+	// EnvServerReadTimeout specifies the environment variable name for configuring the
+	// server's read timeout.
+	//
+	// Default: [DefaultServerReadTimeout]
+	EnvServerReadTimeout = "SERVER_READ_TIMEOUT"
+
+	// EnvServerReadHeaderTimeout specifies the environment variable name for
+	// configuring the server's read header timeout.
+	//
+	// Default: [DefaultServerReadHeaderTimeout]
 	EnvServerReadHeaderTimeout = "SERVER_READ_HEADER_TIMEOUT"
-	EnvServerWriteTimeout      = "SERVER_WRITE_TIMEOUT"
-	EnvServerIdleTimeout       = "SERVER_IDLE_TIMEOUT"
-	EnvServerShutdownTimeout   = "SERVER_SHUTDOWN_TIMEOUT"
+
+	// EnvServerWriteTimeout specifies the environment variable name for configuring
+	// the server's write timeout.
+	//
+	// Default: [DefaultServerWriteTimeout]
+	EnvServerWriteTimeout = "SERVER_WRITE_TIMEOUT"
+
+	// EnvServerIdleTimeout specifies the environment variable name for configuring
+	// the server's idle timeout.
+	//
+	// Default: [DefaultServerIdleTimeout]
+	EnvServerIdleTimeout = "SERVER_IDLE_TIMEOUT"
+
+	// EnvServerShutdownTimeout specifies the environment variable name for configuring
+	// the server's shutdown timeout.
+	//
+	// Default: [DefaultServerShutdownTimeout]
+	EnvServerShutdownTimeout = "SERVER_SHUTDOWN_TIMEOUT"
 )
