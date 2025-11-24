@@ -2,6 +2,7 @@
 package config
 
 import (
+	"errors"
 	"os"
 	"time"
 )
@@ -184,6 +185,27 @@ const (
 	// TCPPortMax defines the maximum port number for TCP connections.
 	TCPPortMax = 65535
 )
+
+type (
+	loader struct {
+		errs []error
+	}
+)
+
+func newLoader() *loader {
+	return &loader{}
+}
+
+func (l *loader) appendError(err error) {
+	l.errs = append(l.errs, err)
+}
+
+func (l *loader) Err() error {
+	if len(l.errs) == 0 {
+		return nil
+	}
+	return errors.Join(l.errs...)
+}
 
 func getEnv(key, defaultValue string) string {
 	if val, ok := os.LookupEnv(key); ok {
