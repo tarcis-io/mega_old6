@@ -133,3 +133,17 @@ const (
 	// Default: [DefaultServerShutdownTimeout]
 	EnvServerShutdownTimeout = "SERVER_SHUTDOWN_TIMEOUT"
 )
+
+const (
+	// DefaultLogLevel defines the default [LogLevel].
+	DefaultLogLevel LogLevel = LogLevelInfo
+
+	// DefaultLogFormat defines the default [LogFormat].
+	DefaultLogFormat LogFormat = LogFormatText
+
+	// DefaultLogOutput defines the default [LogOutput].
+	DefaultLogOutput LogOutput = LogOutputStdout
+
+	// DefaultServerAddress defines the default server address.
+	DefaultServerAddress = "localhost:8080"
+)
