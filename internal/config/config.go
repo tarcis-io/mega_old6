@@ -47,3 +47,15 @@ const (
 	// LogOutputStderr writes log records to the standard error stream (stderr).
 	LogOutputStderr LogOutput = "stderr"
 )
+
+const (
+	EnvLogLevel                = "LOG_LEVEL"
+	EnvLogFormat               = "LOG_FORMAT"
+	EnvLogOutput               = "LOG_OUTPUT"
+	EnvServerAddress           = "SERVER_ADDRESS"
+	EnvServerReadTimeout       = "SERVER_READ_TIMEOUT"
+	EnvServerReadHeaderTimeout = "SERVER_READ_HEADER_TIMEOUT"
+	EnvServerWriteTimeout      = "SERVER_WRITE_TIMEOUT"
+	EnvServerIdleTimeout       = "SERVER_IDLE_TIMEOUT"
+	EnvServerShutdownTimeout   = "SERVER_SHUTDOWN_TIMEOUT"
+)
