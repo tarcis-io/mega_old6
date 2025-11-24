@@ -88,11 +88,15 @@ const (
 	// EnvServerAddress specifies the environment variable name for configuring the
 	// server's address.
 	//
+	// Expected format: "[host]:port" (e.g., "localhost:8080", ":3000")
+	//
 	// Default: [DefaultServerAddress]
 	EnvServerAddress = "SERVER_ADDRESS"
 
 	// EnvServerReadTimeout specifies the environment variable name for configuring the
 	// server's read timeout.
+	//
+	// Expected format: "duration" (e.g., "5s", "1m")
 	//
 	// Default: [DefaultServerReadTimeout]
 	EnvServerReadTimeout = "SERVER_READ_TIMEOUT"
@@ -100,11 +104,15 @@ const (
 	// EnvServerReadHeaderTimeout specifies the environment variable name for
 	// configuring the server's read header timeout.
 	//
+	// Expected format: "duration" (e.g., "5s", "1m")
+	//
 	// Default: [DefaultServerReadHeaderTimeout]
 	EnvServerReadHeaderTimeout = "SERVER_READ_HEADER_TIMEOUT"
 
 	// EnvServerWriteTimeout specifies the environment variable name for configuring
 	// the server's write timeout.
+	//
+	// Expected format: "duration" (e.g., "5s", "1m")
 	//
 	// Default: [DefaultServerWriteTimeout]
 	EnvServerWriteTimeout = "SERVER_WRITE_TIMEOUT"
@@ -112,11 +120,15 @@ const (
 	// EnvServerIdleTimeout specifies the environment variable name for configuring the
 	// server's idle timeout.
 	//
+	// Expected format: "duration" (e.g., "5s", "1m")
+	//
 	// Default: [DefaultServerIdleTimeout]
 	EnvServerIdleTimeout = "SERVER_IDLE_TIMEOUT"
 
 	// EnvServerShutdownTimeout specifies the environment variable name for configuring
 	// the server's shutdown timeout.
+	//
+	// Expected format: "duration" (e.g., "5s", "1m")
 	//
 	// Default: [DefaultServerShutdownTimeout]
 	EnvServerShutdownTimeout = "SERVER_SHUTDOWN_TIMEOUT"
