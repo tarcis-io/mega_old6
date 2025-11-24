@@ -109,8 +109,8 @@ const (
 	// Default: [DefaultServerWriteTimeout]
 	EnvServerWriteTimeout = "SERVER_WRITE_TIMEOUT"
 
-	// EnvServerIdleTimeout specifies the environment variable name for configuring
-	// the server's idle timeout.
+	// EnvServerIdleTimeout specifies the environment variable name for configuring the
+	// server's idle timeout.
 	//
 	// Default: [DefaultServerIdleTimeout]
 	EnvServerIdleTimeout = "SERVER_IDLE_TIMEOUT"
