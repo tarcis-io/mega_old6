@@ -139,30 +139,39 @@ const (
 )
 
 const (
-	// DefaultLogLevel defines the default [LogLevel].
+	// DefaultLogLevel defines the default [LogLevel], used as the fallback when
+	// [EnvLogLevel] is unset.
 	DefaultLogLevel LogLevel = LogLevelInfo
 
-	// DefaultLogFormat defines the default [LogFormat].
+	// DefaultLogFormat defines the default [LogFormat], used as the fallback when
+	// [EnvLogFormat] is unset.
 	DefaultLogFormat LogFormat = LogFormatText
 
-	// DefaultLogOutput defines the default [LogOutput].
+	// DefaultLogOutput defines the default [LogOutput], used as the fallback when
+	// [EnvLogOutput] is unset.
 	DefaultLogOutput LogOutput = LogOutputStdout
 
-	// DefaultServerAddress defines the default server address.
+	// DefaultServerAddress defines the default server address, used as the fallback
+	// when [EnvServerAddress] is unset.
 	DefaultServerAddress = "localhost:8080"
 
-	// DefaultServerReadTimeout defines the default server read timeout.
+	// DefaultServerReadTimeout defines the default server read timeout, used as the
+	// fallback when [EnvServerReadTimeout] is unset.
 	DefaultServerReadTimeout = 5 * time.Second
 
-	// DefaultServerReadHeaderTimeout defines the default server read header timeout.
+	// DefaultServerReadHeaderTimeout defines the default server read header timeout,
+	// used as the fallback when [EnvServerReadHeaderTimeout] is unset.
 	DefaultServerReadHeaderTimeout = 2 * time.Second
 
-	// DefaultServerWriteTimeout defines the default server write timeout.
+	// DefaultServerWriteTimeout defines the default server write timeout, used as the
+	// fallback when [EnvServerWriteTimeout] is unset.
 	DefaultServerWriteTimeout = 10 * time.Second
 
-	// DefaultServerIdleTimeout defines the default server idle timeout.
+	// DefaultServerIdleTimeout defines the default server idle timeout, used as the
+	// fallback when [EnvServerIdleTimeout] is unset.
 	DefaultServerIdleTimeout = 1 * time.Minute
 
-	// DefaultServerShutdownTimeout defines the default server shutdown timeout.
+	// DefaultServerShutdownTimeout defines the default server shutdown timeout, used
+	// as the fallback when [EnvServerShutdownTimeout] is unset.
 	DefaultServerShutdownTimeout = 15 * time.Second
 )
