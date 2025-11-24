@@ -28,7 +28,10 @@ type (
 )
 
 const (
+	// LogFormatText renders log records as human-readable text.
 	LogFormatText LogFormat = "text"
+
+	// LogFormatJSON renders log records as structured JSON objects.
 	LogFormatJSON LogFormat = "json"
 )
 
@@ -38,6 +41,9 @@ type (
 )
 
 const (
+	// LogOutputStdout writes log records to the standard output stream (stdout).
 	LogOutputStdout LogOutput = "stdout"
+
+	// LogOutputStderr writes log records to the standard error stream (stderr).
 	LogOutputStderr LogOutput = "stderr"
 )
