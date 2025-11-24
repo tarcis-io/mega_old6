@@ -1,6 +1,8 @@
+// Package config loads and provides the application configuration.
 package config
 
 type (
+	// LogLevel represents the severity or verbosity of log records.
 	LogLevel string
 )
 
@@ -12,6 +14,7 @@ const (
 )
 
 type (
+	// LogFormat represents the encoding style of log records.
 	LogFormat string
 )
 
@@ -21,6 +24,7 @@ const (
 )
 
 type (
+	// LogOutput represents the destination stream of log records.
 	LogOutput string
 )
 
