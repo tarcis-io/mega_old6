@@ -175,3 +175,11 @@ const (
 	// as the fallback when [EnvServerShutdownTimeout] is unset.
 	DefaultServerShutdownTimeout = 15 * time.Second
 )
+
+const (
+	// TCPPortMin defines the minimum port number for TCP connections.
+	TCPPortMin = 0
+
+	// TCPPortMax defines the maximum port number for TCP connections.
+	TCPPortMax = 65535
+)
