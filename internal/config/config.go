@@ -1,6 +1,10 @@
 // Package config loads and provides the application configuration.
 package config
 
+import (
+	"time"
+)
+
 type (
 	// LogLevel represents the severity or verbosity of log records.
 	LogLevel string
@@ -146,4 +150,19 @@ const (
 
 	// DefaultServerAddress defines the default server address.
 	DefaultServerAddress = "localhost:8080"
+
+	// DefaultServerReadTimeout defines the default server read timeout.
+	DefaultServerReadTimeout = 5 * time.Second
+
+	// DefaultServerReadHeaderTimeout defines the default server read header timeout.
+	DefaultServerReadHeaderTimeout = 2 * time.Second
+
+	// DefaultServerWriteTimeout defines the default server write timeout.
+	DefaultServerWriteTimeout = 10 * time.Second
+
+	// DefaultServerIdleTimeout defines the default server idle timeout.
+	DefaultServerIdleTimeout = 1 * time.Minute
+
+	// DefaultServerShutdownTimeout defines the default server shutdown timeout.
+	DefaultServerShutdownTimeout = 15 * time.Second
 )
