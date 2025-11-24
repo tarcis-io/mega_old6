@@ -3,7 +3,9 @@ package config
 
 import (
 	"errors"
+	"fmt"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -194,6 +196,16 @@ type (
 
 func newLoader() *loader {
 	return &loader{}
+}
+
+func (l *loader) logLevel() LogLevel {
+	env := getEnv(EnvLogLevel, string(DefaultLogLevel))
+	switch val := LogLevel(strings.ToLower(strings.TrimSpace(env))); val {
+	case LogLevelDebug, LogLevelInfo, LogLevelWarn, LogLevelError:
+		return val
+	}
+	l.appendError(fmt.Errorf("invalid log level (%s) got=%q", EnvLogLevel, env))
+	return ""
 }
 
 func (l *loader) appendError(err error) {
