@@ -2,6 +2,7 @@
 package config
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -320,5 +321,8 @@ func (l *loader) appendError(err error) {
 }
 
 func (l *loader) Err() error {
-	return nil
+	if len(l.errs) == 0 {
+		return nil
+	}
+	return errors.Join(l.errs...)
 }
