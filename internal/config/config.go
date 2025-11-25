@@ -189,6 +189,33 @@ const (
 )
 
 type (
+	Config struct {
+		logLevel                LogLevel
+		logFormat               LogFormat
+		logOutput               LogOutput
+		serverAddress           string
+		serverReadTimeout       time.Duration
+		serverReadHeaderTimeout time.Duration
+		serverWriteTimeout      time.Duration
+		serverIdleTimeout       time.Duration
+		serverShutdownTimeout   time.Duration
+	}
+)
+
+func New() (*Config, error) {
+	l := newLoader()
+	cfg := &Config{
+		logLevel:  l.logLevel(),
+		logFormat: l.logFormat(),
+		logOutput: l.logOutput(),
+	}
+	if err := l.Err(); err != nil {
+		return nil, fmt.Errorf("failed to load config: %w", err)
+	}
+	return cfg, nil
+}
+
+type (
 	loader struct {
 		errs []error
 	}
