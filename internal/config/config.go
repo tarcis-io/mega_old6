@@ -189,6 +189,7 @@ const (
 )
 
 type (
+	// Config represents the immutable application configuration.
 	Config struct {
 		logLevel                LogLevel
 		logFormat               LogFormat
