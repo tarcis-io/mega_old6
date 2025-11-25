@@ -202,9 +202,6 @@ type (
 
 // New creates and returns a new [Config] instance by loading and validating the
 // application configuration from the environment variables.
-//
-// If the configuration is invalid, a single error joining all errors found is
-// returned.
 func New() (*Config, error) {
 	return nil, nil
 }
