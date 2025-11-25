@@ -218,6 +218,20 @@ func (l *loader) logFormat() LogFormat {
 	return ""
 }
 
+func (l *loader) logOutput() LogOutput {
+	env := getEnv(EnvLogOutput, string(DefaultLogOutput))
+	val := strings.TrimSpace(env)
+	switch v := LogOutput(strings.ToLower(val)); v {
+	case LogOutputStdout, LogOutputStderr:
+		return v
+	}
+	if val == "" {
+		l.appendError(fmt.Errorf("invalid log output (%s) got=%q", EnvLogOutput, env))
+		return ""
+	}
+	return LogOutput(val)
+}
+
 func (l *loader) appendError(err error) {
 	l.errs = append(l.errs, err)
 }
