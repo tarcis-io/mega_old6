@@ -2,6 +2,7 @@
 package config
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -202,7 +203,22 @@ type (
 // New creates and returns a new [Config] instance by loading and validating the
 // application configuration from the environment variables.
 func New() (*Config, error) {
-	return nil, nil
+	l := newLoader()
+	cfg := &Config{
+		logLevel:                l.logLevel(),
+		logFormat:               l.logFormat(),
+		logOutput:               l.logOutput(),
+		serverAddress:           l.serverAddress(),
+		serverReadTimeout:       l.serverReadTimeout(),
+		serverReadHeaderTimeout: l.serverReadHeaderTimeout(),
+		serverWriteTimeout:      l.serverWriteTimeout(),
+		serverIdleTimeout:       l.serverIdleTimeout(),
+		serverShutdownTimeout:   l.serverShutdownTimeout(),
+	}
+	if err := l.Err(); err != nil {
+		return nil, fmt.Errorf("failed to load configuration: %w", err)
+	}
+	return cfg, nil
 }
 
 // LogLevel returns the configured severity or verbosity of log records.
