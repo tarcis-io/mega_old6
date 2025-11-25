@@ -3,9 +3,6 @@ package config
 
 import (
 	"errors"
-	"fmt"
-	"os"
-	"strings"
 	"time"
 )
 
@@ -209,16 +206,7 @@ type (
 // If the configuration is invalid, a single error joining all errors found is
 // returned.
 func New() (*Config, error) {
-	l := newLoader()
-	cfg := &Config{
-		logLevel:  l.logLevel(),
-		logFormat: l.logFormat(),
-		logOutput: l.logOutput(),
-	}
-	if err := l.Err(); err != nil {
-		return nil, fmt.Errorf("failed to load config: %w", err)
-	}
-	return cfg, nil
+	return nil, nil
 }
 
 // LogLevel returns the configured severity or verbosity of log records.
@@ -277,37 +265,39 @@ func newLoader() *loader {
 }
 
 func (l *loader) logLevel() LogLevel {
-	env := getEnv(EnvLogLevel, string(DefaultLogLevel))
-	switch val := LogLevel(strings.ToLower(strings.TrimSpace(env))); val {
-	case LogLevelDebug, LogLevelInfo, LogLevelWarn, LogLevelError:
-		return val
-	}
-	l.appendError(fmt.Errorf("invalid log level (%s) got=%q", EnvLogLevel, env))
 	return ""
 }
 
 func (l *loader) logFormat() LogFormat {
-	env := getEnv(EnvLogFormat, string(DefaultLogFormat))
-	switch val := LogFormat(strings.ToLower(strings.TrimSpace(env))); val {
-	case LogFormatText, LogFormatJSON:
-		return val
-	}
-	l.appendError(fmt.Errorf("invalid log format (%s) got=%q", EnvLogFormat, env))
 	return ""
 }
 
 func (l *loader) logOutput() LogOutput {
-	env := getEnv(EnvLogOutput, string(DefaultLogOutput))
-	val := strings.TrimSpace(env)
-	switch v := LogOutput(strings.ToLower(val)); v {
-	case LogOutputStdout, LogOutputStderr:
-		return v
-	}
-	if val == "" {
-		l.appendError(fmt.Errorf("invalid log output (%s) got=%q", EnvLogOutput, env))
-		return ""
-	}
-	return LogOutput(val)
+	return ""
+}
+
+func (l *loader) serverAddress() string {
+	return ""
+}
+
+func (l *loader) serverReadTimeout() time.Duration {
+	return 0
+}
+
+func (l *loader) serverReadHeaderTimeout() time.Duration {
+	return 0
+}
+
+func (l *loader) serverWriteTimeout() time.Duration {
+	return 0
+}
+
+func (l *loader) serverIdleTimeout() time.Duration {
+	return 0
+}
+
+func (l *loader) serverShutdownTimeout() time.Duration {
+	return 0
 }
 
 func (l *loader) appendError(err error) {
@@ -319,11 +309,4 @@ func (l *loader) Err() error {
 		return nil
 	}
 	return errors.Join(l.errs...)
-}
-
-func getEnv(key, defaultValue string) string {
-	if val, ok := os.LookupEnv(key); ok {
-		return val
-	}
-	return defaultValue
 }
