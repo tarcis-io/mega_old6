@@ -208,6 +208,16 @@ func (l *loader) logLevel() LogLevel {
 	return ""
 }
 
+func (l *loader) logFormat() LogFormat {
+	env := getEnv(EnvLogFormat, string(DefaultLogFormat))
+	switch val := LogFormat(strings.ToLower(strings.TrimSpace(env))); val {
+	case LogFormatText, LogFormatJSON:
+		return val
+	}
+	l.appendError(fmt.Errorf("invalid log format (%s) got=%q", EnvLogFormat, env))
+	return ""
+}
+
 func (l *loader) appendError(err error) {
 	l.errs = append(l.errs, err)
 }
