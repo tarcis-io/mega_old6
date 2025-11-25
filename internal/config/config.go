@@ -221,14 +221,17 @@ func New() (*Config, error) {
 	return cfg, nil
 }
 
+// LogLevel returns the configured severity or verbosity of log records.
 func (c *Config) LogLevel() LogLevel {
 	return c.logLevel
 }
 
+// LogFormat returns the configured encoding style of log records.
 func (c *Config) LogFormat() LogFormat {
 	return c.logFormat
 }
 
+// LogOutput returns the configured destination stream of log records.
 func (c *Config) LogOutput() LogOutput {
 	return c.logOutput
 }
