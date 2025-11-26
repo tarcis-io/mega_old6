@@ -308,7 +308,15 @@ func (l *loader) logFormat() LogFormat {
 }
 
 func (l *loader) logOutput() LogOutput {
-	return ""
+	env, ok := os.LookupEnv(EnvLogOutput)
+	if !ok {
+		return DefaultLogOutput
+	}
+	if env == "" {
+		l.appendError(fmt.Errorf("invalid log output (%s) got=%q", EnvLogOutput, env))
+		return ""
+	}
+	return LogOutput(env)
 }
 
 func (l *loader) serverAddress() string {
