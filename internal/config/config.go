@@ -4,6 +4,7 @@ package config
 import (
 	"errors"
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -281,10 +282,28 @@ func newLoader() *loader {
 }
 
 func (l *loader) logLevel() LogLevel {
+	env, ok := os.LookupEnv(EnvLogLevel)
+	if !ok {
+		return DefaultLogLevel
+	}
+	switch val := LogLevel(env); val {
+	case LogLevelDebug, LogLevelInfo, LogLevelWarn, LogLevelError:
+		return val
+	}
+	l.appendError(fmt.Errorf("invalid log level (%s) got=%q", EnvLogLevel, env))
 	return ""
 }
 
 func (l *loader) logFormat() LogFormat {
+	env, ok := os.LookupEnv(EnvLogFormat)
+	if !ok {
+		return DefaultLogFormat
+	}
+	switch val := LogFormat(env); val {
+	case LogFormatText, LogFormatJSON:
+		return val
+	}
+	l.appendError(fmt.Errorf("invalid log format (%s) got=%q", EnvLogFormat, env))
 	return ""
 }
 
